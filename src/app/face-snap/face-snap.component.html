@@ -1,1 +1,10 @@
-<p>face-snap works!</p>
+<div class="face-snap-card">
+  <h2>{{ title }}</h2>
+  <img [src]="imageURL" [alt]="title">
+  <p>Mise en ligne le {{ createdDate }}</p>
+  <p>{{ description }}</p>
+  <p>
+    <button (click)="onAddSnap()">{{ ohSnapBtn }}</button>
+    🍌 {{ snaps }}
+  </p>
+</div>
