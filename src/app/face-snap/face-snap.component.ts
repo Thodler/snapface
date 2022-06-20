@@ -22,7 +22,7 @@ export class FaceSnapComponent implements OnInit{
     this.ohSnapBtn = "Oh Snap !";
   }
 
-  onAddSnap() {
+  onClickSnap() {
     if(this.ohSnapBtn == "Oh Snap !"){
       this.ohSnapBtn = "Oops, Oh Snap !"
       this.snaps++;
