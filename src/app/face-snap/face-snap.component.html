@@ -1,11 +1,16 @@
-<div class="face-snap-card">
-  <h2>{{ faceSnap.title }}</h2>
+<div class="face-snap-card" [ngClass]="{
+  lightsaberBlue: ohSnapBtn == 'Oops, Oh Snap !' && faceSnap.title == 'Kenobi',
+  lightsaberRed: ohSnapBtn == 'Oops, Oh Snap !' && faceSnap.title == 'Dark Vador',
+  lightsaberGreen: ohSnapBtn == 'Oops, Oh Snap !' && faceSnap.title == 'Yoda'
+}">
+  <h2>{{ faceSnap.title | uppercase }}</h2>
   <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
-  <p>Mise en ligne le {{ faceSnap.createdDate | date: 'd/mm/YYYY' }}</p>
+  <p class="date" [ngClass]="{text_white: ohSnapBtn == 'Oops, Oh Snap !'}">Mis en ligne le {{ faceSnap.createdDate | date: 'dd MMMM YYYY' }}</p>
   <p>{{ faceSnap.description }}</p>
-  <p *ngIf="faceSnap.location">{{ faceSnap.location }}</p>
+  <p *ngIf="faceSnap.location">Vie à {{ faceSnap.location }}</p>
   <p>
     <button (click)="onClickSnap()">{{ ohSnapBtn }}</button>
-    🍌 {{ faceSnap.snaps }}
+    <span  [ngStyle]="{color: 'rgb(0,'+faceSnap.snaps+',0)'}">🍌 {{ faceSnap.snaps }}</span>
+
   </p>
 </div>

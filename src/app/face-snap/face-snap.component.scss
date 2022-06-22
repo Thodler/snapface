@@ -3,11 +3,43 @@
   width: 35%;
   padding: 0.1rem 0 .8rem 0;
   border-radius: .4rem .4rem 3rem .4rem;
-  box-shadow: 0 0 .5rem #5b5b5b;
+  box-shadow: 0 0 .5rem #707070;
   img{
     width: 100%;
   }
   h2, p {
     padding: 0 1rem;
   }
+  button {
+    background-color: #fff;
+    border: none;
+    padding: .6rem;
+    border-radius: .4rem;
+    box-shadow: 0 0 .2rem;
+    margin-right: 1rem;
+  }
+}
+
+.date{
+  color: #ababab;
+  font-size: 12px;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: end;
+}
+
+.lightsaberBlue{
+  background-color: #b0ceee;
+}
+
+.lightsaberRed{
+  background-color: #e5b7b7;
+}
+
+.lightsaberGreen{
+  background-color: #b9eab9;
+}
+
+.text_white{
+  color: black;
 }
