@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "../app-routing.module";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-landing-page',
@@ -10,13 +10,13 @@ import {AppRoutingModule} from "../app-routing.module";
 export class LandingPageComponent implements OnInit {
 
   constructor(
-    private routeur: AppRoutingModule
+    private routeur: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  linkFaceSnap(){
-
+  onContinue(){
+    this.routeur.navigateByUrl('facesnaps');
   }
 }
