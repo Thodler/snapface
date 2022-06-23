@@ -1,7 +1,25 @@
-h2{
+header{
   text-align: center;
   background-color: #d3d3d3;
   padding: 5rem;
-  margin: 0 0 2rem 0;
+  margin: 0;
+}
+
+h2{
   font-size: 2rem;
+}
+
+nav{
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  margin: 0 2rem;
+  text-decoration: none;
+  color: #3f3fd2;
+}
+
+.active{
+  color: black;
 }
