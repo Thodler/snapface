@@ -1,0 +1,32 @@
+.face-snap-card{
+  margin: 1rem auto;
+  width: 50%;
+  padding: 0.1rem 0 .8rem 0;
+  box-shadow: 0 0 .5rem #707070;
+  img{
+    width: 100%;
+  }
+  h2, p {
+    padding: 0 1rem;
+  }
+  button {
+    background-color: #fff;
+    border: none;
+    padding: .6rem;
+    border-radius: .4rem;
+    box-shadow: 0 0 .2rem;
+    margin-left: 1rem;
+  }
+}
+
+.date{
+  color: #ababab;
+  font-size: 12px;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: end;
+}
+
+.text_white{
+  color: black;
+}

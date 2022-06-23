@@ -1,0 +1,5 @@
+<div class="face-snap-card">
+  <h2>{{ faceSnap.title | uppercase }}</h2>
+  <p class="date">Mis en ligne le {{ faceSnap.createdDate | date: 'dd MMMM YYYY' }}</p>
+ <button type="button" (click)="onDetail(faceSnap.id)">detail</button>
+</div>
