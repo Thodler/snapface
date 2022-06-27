@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FaceSnapsService} from "../_services/face-snaps.service";
 import {FaceSnap} from "../_models/FaceSnap";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-face-snap-single',
@@ -10,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class FaceSnapSingleComponent implements OnInit {
 
-  facesnap! : FaceSnap
+  facesnap! : Observable<FaceSnap>
 
   constructor(
     private faceSnapService: FaceSnapsService,

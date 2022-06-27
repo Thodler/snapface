@@ -14,6 +14,7 @@ import { FaceSnapSingleComponent } from './face-snap-single/face-snap-single.com
 import { FaceSnapRowComponent } from './face-snap-row/face-snap-row.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NewFaceSnapComponent } from './new-face-snap/new-face-snap.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewFaceSnapComponent } from './new-face-snap/new-face-snap.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue:'fr-FR' }
