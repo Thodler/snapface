@@ -1,0 +1,56 @@
+.form-card{
+  box-sizing: border-box;
+  box-shadow: 0 0 1rem rgba(black, .5);
+  width: 50%;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+.form-group{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+h2{
+  text-align: center;
+}
+
+.action-button{
+  text-align: center;
+}
+
+//-------------
+ .face-snap-card{
+   margin: 1rem auto;
+   width: 50%;
+   padding: 0.1rem 0 .8rem 0;
+   border-radius: .4rem .4rem 3rem .4rem;
+   box-shadow: 0 0 .5rem #707070;
+   img{
+     width: 100%;
+   }
+   h2, p {
+     padding: 0 1rem;
+   }
+   button {
+     background-color: #fff;
+     border: none;
+     padding: .6rem;
+     border-radius: .4rem;
+     box-shadow: 0 0 .2rem;
+     margin-right: 1rem;
+   }
+ }
+
+.date{
+  color: #ababab;
+  font-size: 12px;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: end;
+}
+.flex{
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
+}
