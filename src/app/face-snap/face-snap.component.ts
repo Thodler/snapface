@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FaceSnap} from "../_models/FaceSnap";
 import {FaceSnapListComponent} from "../face-snap-list/face-snap-list.component";
 import {FaceSnapsService} from "../_services/face-snaps.service";
@@ -11,7 +11,10 @@ import {tap} from "rxjs";
 })
 export class FaceSnapComponent implements OnInit{
 
-  @Input() faceSnap!: FaceSnap;
+  @Input() faceSnap!: FaceSnap
+  @Input() snapType! :'snap'|'unsnap'
+  @Output() newItemEvent = new EventEmitter<'snap' | 'unsnap'>();
+
   ohSnapBtn!: string;
 
   constructor(
@@ -20,19 +23,23 @@ export class FaceSnapComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.ohSnapBtn = "Oh Snap !";
+    if(this.snapType == 'snap')
+      this.ohSnapBtn = "Oh Snap !";
+    else
+      this.ohSnapBtn =  "Oops, Oh Snap !";
   }
 
   onClickSnap(faceSnapId: number) {
     if(this.ohSnapBtn == "Oh Snap !"){
-      this.faceSnapServ.snapFaceSnapById(faceSnapId, 'snap').pipe(
-
-        tap(() => this.ohSnapBtn = "Oops, Oh Snap !")
-      );
+      this.ohSnapBtn = "Oops, Oh Snap !";
+      this.newItemEvent.emit('unsnap')
+//      this.faceSnapServ.snapFaceSnapById(faceSnapId, 'snap').subscribe();
+//      this.faceSnap = this.faceSnapServ.getFaceSnapById(faceSnapId);
     } else {
-      this.faceSnapServ.snapFaceSnapById(faceSnapId, 'unsnap').pipe(
-        tap(() => this.ohSnapBtn = "Oh Snap !")
-      )
+      this.ohSnapBtn = "Oh Snap !";
+      this.newItemEvent.emit('snap')
+//      this.faceSnapServ.snapFaceSnapById(faceSnapId, 'unsnap').subscribe();
+//      this.faceSnap = this.faceSnapServ.getFaceSnapById(faceSnapId);
     }
   }
 

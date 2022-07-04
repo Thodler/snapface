@@ -24,13 +24,12 @@ export class FaceSnapsService {
   snapFaceSnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): Observable<FaceSnap>
   {
     return this.getFaceSnapById( faceSnapId ).pipe(
-      take(1),
       map(faceSnap => ({
         ...faceSnap,
         snaps: faceSnap.snaps + (snapType === 'snap' ? 1 : -1)
       })),
       switchMap(updateFaceSnap => this.http.put<FaceSnap>(
-        'http://localhost:3000/facesnaps/${faceSnapId]',
+        `http://localhost:3000/facesnaps/${faceSnapId}`,
         updateFaceSnap))
     );
   }

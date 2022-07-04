@@ -12,6 +12,8 @@ import {Observable} from "rxjs";
 export class FaceSnapSingleComponent implements OnInit {
 
   facesnap$! : Observable<FaceSnap>
+  faceID!: number
+  snapType! :'snap'|'unsnap'
 
   constructor(
     private faceSnapService: FaceSnapsService,
@@ -19,8 +21,15 @@ export class FaceSnapSingleComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    const snapId = +this.router.snapshot.params['id'];
-    this.facesnap$= this.faceSnapService.getFaceSnapById(snapId);
+    this.faceID= +this.router.snapshot.params['id'];
+    this.facesnap$= this.faceSnapService.getFaceSnapById(this.faceID);
+    this.snapType = 'snap';
+  }
+
+  onSnapEvent(value: 'snap' | 'unsnap'){
+    this.faceSnapService.snapFaceSnapById(this.faceID, value).subscribe();
+    this.snapType = value;
+    this.facesnap$ = this.faceSnapService.getFaceSnapById(this.faceID);
   }
 
 }

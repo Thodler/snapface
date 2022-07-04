@@ -1,2 +1,2 @@
 <a routerLink="/facesnaps">Back</a>
-<app-face-snap *ngIf="facesnap$ | async as faceSnap" [faceSnap]="faceSnap"></app-face-snap>
+<app-face-snap *ngIf="facesnap$ | async as faceSnap" [faceSnap]="faceSnap" [snapType]="snapType" (newItemEvent)="onSnapEvent($event)" ></app-face-snap>
