@@ -9,7 +9,7 @@
   <p>{{ faceSnap.description }}</p>
   <p *ngIf="faceSnap.location">Vie à {{ faceSnap.location }}</p>
   <p>
-    <button (click)="onClickSnap()">{{ ohSnapBtn }}</button>
+    <button (click)="onClickSnap(faceSnap.id)">{{ ohSnapBtn }}</button>
     <span  [ngStyle]="{color: 'rgb(0,'+faceSnap.snaps+',0)'}">🍌 {{ faceSnap.snaps }}</span>
 
   </p>

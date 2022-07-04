@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {FaceSnap} from "../_models/FaceSnap";
-import {take, map, Observable, tap} from "rxjs";
+import {take, map, Observable, tap, switchMap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -21,20 +21,28 @@ export class FaceSnapsService {
     return this.http.get<FaceSnap>(`http://localhost:3000/facesnaps/${id}`);
   }
 
-  snapFaceSnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): void
+  snapFaceSnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): Observable<FaceSnap>
   {
-    const faceSnap = this.getFaceSnapById( faceSnapId );
-    snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--
+    return this.getFaceSnapById( faceSnapId ).pipe(
+      take(1),
+      map(faceSnap => ({
+        ...faceSnap,
+        snaps: faceSnap.snaps + (snapType === 'snap' ? 1 : -1)
+      })),
+      switchMap(updateFaceSnap => this.http.put<FaceSnap>(
+        'http://localhost:3000/facesnaps/${faceSnapId]',
+        updateFaceSnap))
+    );
   }
 
-  addNewFaceSnap(formValue: FaceSnap){
-    const faceSnap: FaceSnap = {
-      ...formValue,
-      snaps: 0,
-      createdDate: new Date(),
-      id: this.faceSnaps[this.faceSnaps.length - 1].id + 1
-    };
-    this.faceSnaps.push(faceSnap);
-  }
+addNewFaceSnap(formValue: FaceSnap){
+  /*const faceSnap: FaceSnap = {
+  ...formValue,
+  snaps: 0,
+  createdDate: new Date(),
+  id: this.faceSnaps[this.faceSnaps.length - 1].id + 1
+};
+this.faceSnaps.push(faceSnap);*/
+}
 
 }

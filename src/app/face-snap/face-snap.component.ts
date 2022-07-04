@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FaceSnap} from "../_models/FaceSnap";
 import {FaceSnapListComponent} from "../face-snap-list/face-snap-list.component";
 import {FaceSnapsService} from "../_services/face-snaps.service";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-face-snap',
@@ -22,13 +23,16 @@ export class FaceSnapComponent implements OnInit{
     this.ohSnapBtn = "Oh Snap !";
   }
 
-  onClickSnap() {
+  onClickSnap(faceSnapId: number) {
     if(this.ohSnapBtn == "Oh Snap !"){
-      this.ohSnapBtn = "Oops, Oh Snap !"
-      this.faceSnapServ.snapFaceSnapById(this.faceSnap.id, 'snap');
+      this.faceSnapServ.snapFaceSnapById(faceSnapId, 'snap').pipe(
+
+        tap(() => this.ohSnapBtn = "Oops, Oh Snap !")
+      );
     } else {
-      this.ohSnapBtn = "Oh Snap !"
-      this.faceSnapServ.snapFaceSnapById(this.faceSnap.id, 'unsnap');
+      this.faceSnapServ.snapFaceSnapById(faceSnapId, 'unsnap').pipe(
+        tap(() => this.ohSnapBtn = "Oh Snap !")
+      )
     }
   }
 
